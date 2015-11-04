@@ -1,0 +1,487 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\Projects\STM32\Robot\Robot.uvproj
+Project File Date:  10/29/2015
+
+<h2>Output:</h2>
+Build target 'Robot'
+assembling startup_stm32f4xx.s...
+compiling system_stm32f4xx.c...
+compiling led.c...
+compiling main.c...
+Source\main.c(33): error:  #20: identifier "GPIO_InitTypeDef" is undefined
+      GPIO_InitTypeDef gpio_init;
+Source\main.c(34): error:  #20: identifier "USART_InitTypeDef" is undefined
+      USART_InitTypeDef usart_init;
+Source\main.c(43): warning:  #223-D: function "RCC_APB1PeriphClockCmd" declared implicitly
+      RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
+Source\main.c(43): error:  #20: identifier "RCC_APB1Periph_USART3" is undefined
+      RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
+Source\main.c(46): warning:  #223-D: function "RCC_AHB1PeriphClockCmd" declared implicitly
+      RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+Source\main.c(46): error:  #20: identifier "RCC_AHB1Periph_GPIOB" is undefined
+      RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+Source\main.c(49): warning:  #223-D: function "GPIO_PinAFConfig" declared implicitly
+      GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_USART3);
+Source\main.c(49): error:  #20: identifier "GPIO_PinSource10" is undefined
+      GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_USART3);
+Source\main.c(49): error:  #20: identifier "GPIO_AF_USART3" is undefined
+      GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_USART3);
+Source\main.c(50): error:  #20: identifier "GPIO_PinSource11" is undefined
+      GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_USART3);
+Source\main.c(52): error:  #20: identifier "GPIO_Mode_AF" is undefined
+      gpio_init.GPIO_Mode = GPIO_Mode_AF;
+Source\main.c(53): error:  #20: identifier "GPIO_OType_PP" is undefined
+      gpio_init.GPIO_OType = GPIO_OType_PP;
+Source\main.c(54): error:  #20: identifier "GPIO_Pin_10" is undefined
+      gpio_init.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;
+Source\main.c(54): error:  #20: identifier "GPIO_Pin_11" is undefined
+      gpio_init.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;
+Source\main.c(55): error:  #20: identifier "GPIO_PuPd_UP" is undefined
+      gpio_init.GPIO_PuPd = GPIO_PuPd_UP;
+Source\main.c(56): error:  #20: identifier "GPIO_Speed_100MHz" is undefined
+      gpio_init.GPIO_Speed = GPIO_Speed_100MHz;
+Source\main.c(57): warning:  #223-D: function "GPIO_Init" declared implicitly
+      GPIO_Init(GPIOB, &gpio_init);
+Source\main.c(62): error:  #20: identifier "USART_HardwareFlowControl_None" is undefined
+      usart_init.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+Source\main.c(63): error:  #20: identifier "USART_Mode_Tx" is undefined
+      usart_init.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;
+Source\main.c(63): error:  #20: identifier "USART_Mode_Rx" is undefined
+      usart_init.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;
+Source\main.c(64): error:  #20: identifier "USART_Parity_No" is undefined
+      usart_init.USART_Parity = USART_Parity_No;
+Source\main.c(65): error:  #20: identifier "USART_StopBits_1" is undefined
+      usart_init.USART_StopBits = USART_StopBits_1;
+Source\main.c(66): error:  #20: identifier "USART_WordLength_8b" is undefined
+      usart_init.USART_WordLength = USART_WordLength_8b;
+Source\main.c(67): warning:  #223-D: function "USART_Init" declared implicitly
+      USART_Init(USART3, &usart_init);
+Source\main.c(70): warning:  #223-D: function "USART_Cmd" declared implicitly
+      USART_Cmd(USART3, ENABLE);
+Source\main.c: 6 warnings, 19 errors
+compiling string_manipulator.c...
+compiling uart.c...
+Source\uart.c(36): warning:  #223-D: function "USART_SendData" declared implicitly
+          USART_SendData(USARTx, data);
+Source\uart.c(55): warning:  #223-D: function "USART_ReceiveData" declared implicitly
+          data = USART_ReceiveData(USARTx);
+Source\uart.c: 2 warnings, 0 errors
+compiling system.c...
+.\Header\Source_Include\system.h(13): error:  #20: identifier "uint32_t" is undefined
+  void Delay(uint32_t ms_tick);
+.\Header\Source_Include\system.h(14): warning:  #1-D: last line of file ends without a newline
+  void SysClock_Init(void);
+Source\system.c(10): error:  #20: identifier "__IO" is undefined
+  __IO uint32_t g_sys_tick;
+Source\system.c(10): error:  #65: expected a ";"
+  __IO uint32_t g_sys_tick;
+Source\system.c(14): error:  #20: identifier "g_sys_tick" is undefined
+      g_sys_tick++;
+Source\system.c(17): error:  #757: variable "uint32_t" is not a type name
+  void Delay(uint32_t ms_tick)
+Source\system.c(19): error:  #65: expected a ";"
+      uint32_t current_sys_tick = g_sys_tick;
+Source\system.c(20): error:  #20: identifier "g_sys_tick" is undefined
+      while ((g_sys_tick - current_sys_tick) <= ms_tick)
+Source\system.c(20): error:  #20: identifier "current_sys_tick" is undefined
+      while ((g_sys_tick - current_sys_tick) <= ms_tick)
+Source\system.c(28): error:  #20: identifier "RCC_ClocksTypeDef" is undefined
+      RCC_ClocksTypeDef RCC_Clocks;
+Source\system.c(29): warning:  #223-D: function "RCC_GetClocksFreq" declared implicitly
+      RCC_GetClocksFreq(&RCC_Clocks);
+Source\system.c(30): warning:  #223-D: function "SysTick_Config" declared implicitly
+      SysTick_Config(RCC_Clocks.HCLK_Frequency / 100);
+Source\system.c(31): warning:  #1-D: last line of file ends without a newline
+  }
+Source\system.c: 4 warnings, 9 errors
+compiling misc.c...
+Peripheral\misc.c(115): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_NVIC_PRIORITY_GROUP(NVIC_PriorityGroup));
+Peripheral\misc.c(135): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_FUNCTIONAL_STATE(NVIC_InitStruct->NVIC_IRQChannelCmd));
+Peripheral\misc.c(177): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_NVIC_VECTTAB(NVIC_VectTab));
+Peripheral\misc.c(196): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_NVIC_LP(LowPowerMode));
+Peripheral\misc.c(220): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_SYSTICK_CLK_SOURCE(SysTick_CLKSource));
+Peripheral\misc.c: 5 warnings, 0 errors
+compiling stm32f4xx_exti.c...
+Peripheral\stm32f4xx_exti.c(124): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_EXTI_MODE(EXTI_InitStruct->EXTI_Mode));
+Peripheral\stm32f4xx_exti.c(193): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_EXTI_LINE(EXTI_Line));
+Peripheral\stm32f4xx_exti.c(224): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GET_EXTI_LINE(EXTI_Line));
+Peripheral\stm32f4xx_exti.c(246): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_EXTI_LINE(EXTI_Line));
+Peripheral\stm32f4xx_exti.c(262): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GET_EXTI_LINE(EXTI_Line));
+Peripheral\stm32f4xx_exti.c(285): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_EXTI_LINE(EXTI_Line));
+Peripheral\stm32f4xx_exti.c: 6 warnings, 0 errors
+compiling stm32f4xx_gpio.c...
+Peripheral\stm32f4xx_gpio.c(123): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(187): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(260): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(304): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(326): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(343): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(365): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(383): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(402): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(422): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(445): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(459): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c(535): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+Peripheral\stm32f4xx_gpio.c: 13 warnings, 0 errors
+compiling stm32f4xx_rcc.c...
+Peripheral\stm32f4xx_rcc.c(240): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_HSE(RCC_HSE));
+Peripheral\stm32f4xx_rcc.c(296): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_CALIBRATION_VALUE(HSICalibrationValue));
+Peripheral\stm32f4xx_rcc.c(331): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_FUNCTIONAL_STATE(NewState));
+Peripheral\stm32f4xx_rcc.c(356): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_LSE(RCC_LSE));
+Peripheral\stm32f4xx_rcc.c(396): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_FUNCTIONAL_STATE(NewState));
+Peripheral\stm32f4xx_rcc.c(439): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_PLL_SOURCE(RCC_PLLSource));
+Peripheral\stm32f4xx_rcc.c(462): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_FUNCTIONAL_STATE(NewState));
+Peripheral\stm32f4xx_rcc.c(488): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_PLLI2SN_VALUE(PLLI2SN));
+Peripheral\stm32f4xx_rcc.c(503): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_FUNCTIONAL_STATE(NewState));
+Peripheral\stm32f4xx_rcc.c(521): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_FUNCTIONAL_STATE(NewState));
+Peripheral\stm32f4xx_rcc.c(548): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_MCO1SOURCE(RCC_MCO1Source));
+Peripheral\stm32f4xx_rcc.c(586): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_MCO2SOURCE(RCC_MCO2Source));
+Peripheral\stm32f4xx_rcc.c(692): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_SYSCLK_SOURCE(RCC_SYSCLKSource));
+Peripheral\stm32f4xx_rcc.c(745): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_HCLK(RCC_SYSCLK));
+Peripheral\stm32f4xx_rcc.c(777): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_PCLK(RCC_HCLK));
+Peripheral\stm32f4xx_rcc.c(808): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_PCLK(RCC_HCLK));
+Peripheral\stm32f4xx_rcc.c(985): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_RTCCLK_SOURCE(RCC_RTCCLKSource));
+Peripheral\stm32f4xx_rcc.c(1015): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_FUNCTIONAL_STATE(NewState));
+Peripheral\stm32f4xx_rcc.c(1032): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_FUNCTIONAL_STATE(NewState));
+Peripheral\stm32f4xx_rcc.c(1049): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_I2SCLK_SOURCE(RCC_I2SCLKSource));
+Peripheral\stm32f4xx_rcc.c(1088): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_AHB1_CLOCK_PERIPH(RCC_AHB1Periph));
+Peripheral\stm32f4xx_rcc.c(1120): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_AHB2_PERIPH(RCC_AHB2Periph));
+Peripheral\stm32f4xx_rcc.c(1147): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_AHB3_PERIPH(RCC_AHB3Periph));  
+Peripheral\stm32f4xx_rcc.c(1197): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_APB1_PERIPH(RCC_APB1Periph));  
+Peripheral\stm32f4xx_rcc.c(1237): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_APB2_PERIPH(RCC_APB2Periph));
+Peripheral\stm32f4xx_rcc.c(1276): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_AHB1_RESET_PERIPH(RCC_AHB1Periph));
+Peripheral\stm32f4xx_rcc.c(1305): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_AHB2_PERIPH(RCC_AHB2Periph));
+Peripheral\stm32f4xx_rcc.c(1329): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_AHB3_PERIPH(RCC_AHB3Periph));
+Peripheral\stm32f4xx_rcc.c(1376): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_APB1_PERIPH(RCC_APB1Periph));
+Peripheral\stm32f4xx_rcc.c(1412): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_APB2_RESET_PERIPH(RCC_APB2Periph));
+Peripheral\stm32f4xx_rcc.c(1458): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_AHB1_LPMODE_PERIPH(RCC_AHB1Periph));
+Peripheral\stm32f4xx_rcc.c(1490): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_AHB2_PERIPH(RCC_AHB2Periph));
+Peripheral\stm32f4xx_rcc.c(1517): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_AHB3_PERIPH(RCC_AHB3Periph));
+Peripheral\stm32f4xx_rcc.c(1567): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_APB1_PERIPH(RCC_APB1Periph));
+Peripheral\stm32f4xx_rcc.c(1607): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_APB2_PERIPH(RCC_APB2Periph));
+Peripheral\stm32f4xx_rcc.c(1652): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_IT(RCC_IT));
+Peripheral\stm32f4xx_rcc.c(1692): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_FLAG(RCC_FLAG));
+Peripheral\stm32f4xx_rcc.c(1754): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_GET_IT(RCC_IT));
+Peripheral\stm32f4xx_rcc.c(1785): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_RCC_CLEAR_IT(RCC_IT));
+Peripheral\stm32f4xx_rcc.c: 39 warnings, 0 errors
+compiling stm32f4xx_syscfg.c...
+Peripheral\stm32f4xx_syscfg.c(105): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_SYSCFG_MEMORY_REMAP_CONFING(SYSCFG_MemoryRemap));
+Peripheral\stm32f4xx_syscfg.c(124): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_EXTI_PORT_SOURCE(EXTI_PortSourceGPIOx));
+Peripheral\stm32f4xx_syscfg.c(142): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_SYSCFG_ETH_MEDIA_INTERFACE(SYSCFG_ETH_MediaInterface)); 
+Peripheral\stm32f4xx_syscfg.c(160): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_FUNCTIONAL_STATE(NewState));
+Peripheral\stm32f4xx_syscfg.c: 4 warnings, 0 errors
+compiling stm32f4xx_tim.c...
+Peripheral\stm32f4xx_tim.c(197): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx)); 
+Peripheral\stm32f4xx_tim.c(287): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx)); 
+Peripheral\stm32f4xx_tim.c(357): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(382): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(406): warning:  #223-D: function "assert_param" declared implicitly
+     assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(421): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(435): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(449): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(465): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(494): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(519): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(546): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(569): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(589): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx)); 
+Peripheral\stm32f4xx_tim.c(670): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx)); 
+Peripheral\stm32f4xx_tim.c(751): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx)); 
+Peripheral\stm32f4xx_tim.c(832): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx)); 
+Peripheral\stm32f4xx_tim.c(912): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx)); 
+Peripheral\stm32f4xx_tim.c(1012): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1055): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1071): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1086): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1101): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1121): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1150): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1178): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1207): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1235): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1265): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1294): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1323): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1352): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1383): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1413): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1443): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1473): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1503): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1532): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1561): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1590): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1616): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST4_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1644): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1671): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST4_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1698): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1725): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST4_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1752): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1783): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx)); 
+Peripheral\stm32f4xx_tim.c(1813): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST4_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1893): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(1971): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2025): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2040): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2054): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx)); 
+Peripheral\stm32f4xx_tim.c(2068): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2088): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2113): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2137): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2161): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2214): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST4_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2258): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST4_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2283): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST4_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2308): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST4_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2365): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2403): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2437): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2478): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2508): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2547): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_ALL_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2584): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2611): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST5_PERIPH(TIMx)); 
+Peripheral\stm32f4xx_tim.c(2637): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2676): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2697): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2728): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2770): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2815): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2884): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST1_PERIPH(TIMx)); 
+Peripheral\stm32f4xx_tim.c(2925): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST5_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2949): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(2972): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(3005): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST3_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(3065): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(3112): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST2_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c(3163): warning:  #223-D: function "assert_param" declared implicitly
+    assert_param(IS_TIM_LIST6_PERIPH(TIMx));
+Peripheral\stm32f4xx_tim.c: 84 warnings, 0 errors
+compiling stm32f4_discovery.c...
+Ultility\stm32f4_discovery.c(69): error:  #20: identifier "GPIO_Pin_12" is undefined
+  const uint16_t GPIO_PIN[LEDn] = {LED4_PIN, LED3_PIN, LED5_PIN,
+Ultility\stm32f4_discovery.c(69): error:  #20: identifier "GPIO_Pin_13" is undefined
+  const uint16_t GPIO_PIN[LEDn] = {LED4_PIN, LED3_PIN, LED5_PIN,
+Ultility\stm32f4_discovery.c(69): error:  #20: identifier "GPIO_Pin_14" is undefined
+  const uint16_t GPIO_PIN[LEDn] = {LED4_PIN, LED3_PIN, LED5_PIN,
+Ultility\stm32f4_discovery.c(70): error:  #20: identifier "GPIO_Pin_15" is undefined
+                                   LED6_PIN};
+Ultility\stm32f4_discovery.c(71): error:  #20: identifier "RCC_AHB1Periph_GPIOD" is undefined
+  const uint32_t GPIO_CLK[LEDn] = {LED4_GPIO_CLK, LED3_GPIO_CLK, LED5_GPIO_CLK,
+Ultility\stm32f4_discovery.c(76): error:  #20: identifier "GPIO_Pin_0" is undefined
+  const uint16_t BUTTON_PIN[BUTTONn] = {USER_BUTTON_PIN }; 
+Ultility\stm32f4_discovery.c(78): error:  #20: identifier "RCC_AHB1Periph_GPIOA" is undefined
+  const uint32_t BUTTON_CLK[BUTTONn] = {USER_BUTTON_GPIO_CLK };
+Ultility\stm32f4_discovery.c(80): error:  #20: identifier "EXTI_Line0" is undefined
+  const uint16_t BUTTON_EXTI_LINE[BUTTONn] = {USER_BUTTON_EXTI_LINE };
+Ultility\stm32f4_discovery.c(82): error:  #20: identifier "EXTI_PortSourceGPIOA" is undefined
+  const uint8_t BUTTON_PORT_SOURCE[BUTTONn] = {USER_BUTTON_EXTI_PORT_SOURCE};
+Ultility\stm32f4_discovery.c(84): error:  #20: identifier "EXTI_PinSource0" is undefined
+  const uint8_t BUTTON_PIN_SOURCE[BUTTONn] = {USER_BUTTON_EXTI_PIN_SOURCE }; 
+Ultility\stm32f4_discovery.c(87): error:  #20: identifier "NVIC_InitTypeDef" is undefined
+  NVIC_InitTypeDef   NVIC_InitStructure;
+Ultility\stm32f4_discovery.c(118): error:  #20: identifier "GPIO_InitTypeDef" is undefined
+    GPIO_InitTypeDef  GPIO_InitStructure;
+Ultility\stm32f4_discovery.c(121): warning:  #223-D: function "RCC_AHB1PeriphClockCmd" declared implicitly
+    RCC_AHB1PeriphClockCmd(GPIO_CLK[Led], ENABLE);
+Ultility\stm32f4_discovery.c(125): error:  #20: identifier "GPIO_Mode_OUT" is undefined
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+Ultility\stm32f4_discovery.c(126): error:  #20: identifier "GPIO_OType_PP" is undefined
+    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+Ultility\stm32f4_discovery.c(127): error:  #20: identifier "GPIO_PuPd_UP" is undefined
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+Ultility\stm32f4_discovery.c(128): error:  #20: identifier "GPIO_Speed_50MHz" is undefined
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+Ultility\stm32f4_discovery.c(129): warning:  #223-D: function "GPIO_Init" declared implicitly
+    GPIO_Init(GPIO_PORT[Led], &GPIO_InitStructure);
+Ultility\stm32f4_discovery.c(190): error:  #20: identifier "GPIO_InitTypeDef" is undefined
+    GPIO_InitTypeDef GPIO_InitStructure;
+Ultility\stm32f4_discovery.c(191): error:  #20: identifier "EXTI_InitTypeDef" is undefined
+    EXTI_InitTypeDef EXTI_InitStructure;
+Ultility\stm32f4_discovery.c(192): error:  #20: identifier "NVIC_InitTypeDef" is undefined
+    NVIC_InitTypeDef NVIC_InitStructure;
+Ultility\stm32f4_discovery.c(195): warning:  #223-D: function "RCC_AHB1PeriphClockCmd" declared implicitly
+    RCC_AHB1PeriphClockCmd(BUTTON_CLK[Button], ENABLE);
+Ultility\stm32f4_discovery.c(196): warning:  #223-D: function "RCC_APB2PeriphClockCmd" declared implicitly
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+Ultility\stm32f4_discovery.c(196): error:  #20: identifier "RCC_APB2Periph_SYSCFG" is undefined
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+Ultility\stm32f4_discovery.c(199): error:  #20: identifier "GPIO_Mode_IN" is undefined
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+Ultility\stm32f4_discovery.c(200): error:  #20: identifier "GPIO_PuPd_NOPULL" is undefined
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+Ultility\stm32f4_discovery.c(202): warning:  #223-D: function "GPIO_Init" declared implicitly
+    GPIO_Init(BUTTON_PORT[Button], &GPIO_InitStructure);
+Ultility\stm32f4_discovery.c(207): warning:  #223-D: function "SYSCFG_EXTILineConfig" declared implicitly
+      SYSCFG_EXTILineConfig(BUTTON_PORT_SOURCE[Button], BUTTON_PIN_SOURCE[Button]);
+Ultility\stm32f4_discovery.c(211): error:  #20: identifier "EXTI_Mode_Interrupt" is undefined
+      EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+Ultility\stm32f4_discovery.c(212): error:  #20: identifier "EXTI_Trigger_Rising" is undefined
+      EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;  
+Ultility\stm32f4_discovery.c(214): warning:  #223-D: function "EXTI_Init" declared implicitly
+      EXTI_Init(&EXTI_InitStructure);
+Ultility\stm32f4_discovery.c(222): warning:  #223-D: function "NVIC_Init" declared implicitly
+      NVIC_Init(&NVIC_InitStructure); 
+Ultility\stm32f4_discovery.c(234): warning:  #223-D: function "GPIO_ReadInputDataBit" declared implicitly
+    return GPIO_ReadInputDataBit(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+Ultility\stm32f4_discovery.c: 9 warnings, 24 errors
+".\Build\Robot.axf" - 52 Error(s), 172 Warning(s).
+Target not created
+</pre>
+</body>
+</html>
