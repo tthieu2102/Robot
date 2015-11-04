@@ -1,0 +1,22 @@
+D:\Projects\C Sharp\RobotController\RobotController\bin\Release\RobotController.exe.config
+D:\Projects\C Sharp\RobotController\RobotController\bin\Release\RobotController.exe
+D:\Projects\C Sharp\RobotController\RobotController\bin\Release\RobotController.pdb
+D:\Projects\C Sharp\RobotController\RobotController\obj\Release\RobotController.csprojResolveAssemblyReference.cache
+D:\Projects\C Sharp\RobotController\RobotController\obj\Release\RobotController.ControlForm.resources
+D:\Projects\C Sharp\RobotController\RobotController\obj\Release\RobotController.MainForm.resources
+D:\Projects\C Sharp\RobotController\RobotController\obj\Release\RobotController.Properties.Resources.resources
+D:\Projects\C Sharp\RobotController\RobotController\obj\Release\RobotController.SettingForm.resources
+D:\Projects\C Sharp\RobotController\RobotController\obj\Release\RobotController.csproj.GenerateResource.Cache
+D:\Projects\C Sharp\RobotController\RobotController\obj\Release\RobotController.exe
+D:\Projects\C Sharp\RobotController\RobotController\obj\Release\RobotController.pdb
+C:\Users\12125\Desktop\RobotController\RobotController\bin\Release\RobotController.exe.config
+C:\Users\12125\Desktop\RobotController\RobotController\obj\Release\RobotController.exe
+C:\Users\12125\Desktop\RobotController\RobotController\obj\Release\RobotController.pdb
+C:\Users\12125\Desktop\RobotController\RobotController\bin\Release\RobotController.exe
+C:\Users\12125\Desktop\RobotController\RobotController\bin\Release\RobotController.pdb
+C:\Users\12125\Desktop\RobotController\RobotController\obj\Release\RobotController.csprojResolveAssemblyReference.cache
+C:\Users\12125\Desktop\RobotController\RobotController\obj\Release\RobotController.ControlForm.resources
+C:\Users\12125\Desktop\RobotController\RobotController\obj\Release\RobotController.MainForm.resources
+C:\Users\12125\Desktop\RobotController\RobotController\obj\Release\RobotController.Properties.Resources.resources
+C:\Users\12125\Desktop\RobotController\RobotController\obj\Release\RobotController.SettingForm.resources
+C:\Users\12125\Desktop\RobotController\RobotController\obj\Release\RobotController.csproj.GenerateResource.Cache

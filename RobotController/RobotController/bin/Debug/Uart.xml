@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<uart>
+  <port_name>COM3</port_name>
+  <baud_rate>38400</baud_rate>
+  <data_bits>8</data_bits>
+  <parity>0</parity>
+  <stop_bits>1</stop_bits>
+  <hand_shake>0</hand_shake>
+</uart>
