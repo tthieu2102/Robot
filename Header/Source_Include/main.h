@@ -7,10 +7,6 @@
 #ifndef _MAIN_H
 #define _MAIN_H
 
-// Include header files
-#include "robot.h"
-#include "keyboard.h"
-
 // PUBLIC PROTOTYPE FUNCTIONS
 void LeftMotor_Configure(motor_t* p_motor);
 void RightMotor_Configure(motor_t* p_motor);

@@ -4,9 +4,11 @@
  * Description: This file contains function implementations concerned with controlling motor
  */
 
-#include "motor.h"
+#include "stm32f4xx.h"
 #include <stdio.h>
 #include "gpio.h"
+#include "tm_stm32f4_pwm.h"
+#include "motor.h"
 
 void Motor_Init(motor_t* p_motor)
 {
@@ -29,6 +31,7 @@ void Motor_Init(motor_t* p_motor)
         GPIO_Init(p_motor->gpio_port, &gpio_init);
         
         // Go into brake state
+        TM_PWM_SetChannelPercent(&(p_motor->tim_data), p_motor->pwm_channel, p_motor->speed);
         Motor_Brake(p_motor);
     }
 }
@@ -55,8 +58,8 @@ void Motor_MoveBackward(motor_t* p_motor)
 {
     if (p_motor != NULL)
     {
-        GPIO_WriteBit(p_motor->gpio_port, p_motor->gpio_direction_pin_1, Bit_SET);
         GPIO_WriteBit(p_motor->gpio_port, p_motor->gpio_direction_pin_2, Bit_RESET);
+        GPIO_WriteBit(p_motor->gpio_port, p_motor->gpio_direction_pin_1, Bit_SET);
     }
 }
 
@@ -98,6 +101,49 @@ void Motor_SetDirection(motor_t* p_motor, motor_direction_e direction)
     if (p_motor != NULL)
     {
         p_motor->direction = direction;
+    }
+}
+
+
+//22-11-2015 @Hieu
+/*
+ * Name: Motor_SetSpeedLevel
+ * Module: Motor
+ * Parameters:  speedPercent: 0-100%
+ * Description: Set motor's speed level
+ * Return: void
+ */
+void Motor_SetSpeed(motor_t* p_motor, float speed)
+{
+    if ((p_motor != NULL) && (speed >= MOTOR_MIN_SPEED) && (speed <= MOTOR_MAX_SPEED))
+    {
+        p_motor->speed = speed;
+        TM_PWM_SetChannelPercent(&(p_motor->tim_data), p_motor->pwm_channel, p_motor->speed);
+    }
+}
+
+//24-11-2015 @Hieu
+/*
+ * Name: Motor_ChangeSpeed
+ * Module: Motor
+ * Parameters:  increase: > 0 to increase speed, <= 0 to decrease speed
+ * Description: Change motor's speed up or down
+ * Return: void
+ */
+void Motor_ChangeSpeed(motor_t* p_motor, uint8_t increase)
+{
+    if ((p_motor != NULL))
+    {
+        if (increase > 0)
+        {
+            p_motor->speed += MOTOR_SPEED_CHANGE_INTERVAL;
+        }
+        else
+        {
+            p_motor->speed -= MOTOR_SPEED_CHANGE_INTERVAL;            
+        }
+        
+        TM_PWM_SetChannelPercent(&(p_motor->tim_data), p_motor->pwm_channel, p_motor->speed);
     }
 }
 

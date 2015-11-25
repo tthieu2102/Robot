@@ -362,7 +362,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Header\Additional_Include;.\Header\CMSIS_Include;.\Header\Peripheral_Include;.\Header\Source_Include;.\Header\ST_Include;.\Header\Ultility_Include</IncludePath>
+              <IncludePath>.\Header\Additional_Include;.\Header\CMSIS_Include;.\Header\Peripheral_Include;.\Header\Source_Include;.\Header\ST_Include;.\Header\Ultility_Include;.\Header\TM_Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -519,6 +519,26 @@
               <FileName>stm32f4_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Ultility\stm32f4_discovery.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>PWM</GroupName>
+          <Files>
+            <File>
+              <FileName>tm_stm32f4_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\TM_PWM\tm_stm32f4_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>tm_stm32f4_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\TM_PWM\tm_stm32f4_pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>tm_stm32f4_timer_properties.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\TM_PWM\tm_stm32f4_timer_properties.c</FilePath>
             </File>
           </Files>
         </Group>

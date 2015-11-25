@@ -6,20 +6,29 @@
  *      Phrase 1. Make robot move
  *          Press Up, Down, Left, Right to make robot move forward, backward, turn left, turn right
  */
-
-#include "main.h"
+#include <stdio.h>
+#include "stm32f4xx.h"
+#include "gpio.h"
+#include "tm_stm32f4_pwm.h"
+#include "stm32f4xx_gpio.h"
 #include "string.h"
 #include "system.h"
+#include "button.h"
+#include "uart.h"
+#include "motor.h"
+#include "robot.h"
+#include "keyboard.h"
 #include "led.h"
-#include "stm32f4xx_gpio.h"
-#include "gpio.h"
+#include "main.h"
+
 
 int main(void)
 {
     // Preparations
+    GPIO_InitTypeDef gpio_init;
     keyboard_t keyboard;
     robot_t robot;
-    uint16_t data = 0;
+    uint16_t command = 0;
     
     memset(&robot, 0, sizeof(robot_t));
     memset(&keyboard, 0, sizeof(keyboard_t));
@@ -28,9 +37,7 @@ int main(void)
     SysClock_Init();
     
     // Robot initializations
-    RightMotor_Configure(&(robot.motor_right));
-    LeftMotor_Configure(&(robot.motor_left));
-    UARTReceiver_Configure(&(robot.uart_receiver));
+    
     Robot_Init(&robot);
     
     // Keyboard initialization
@@ -38,7 +45,7 @@ int main(void)
     
     //-----------------------------------
             // Preparations
-        GPIO_InitTypeDef gpio_init;
+        
         GPIO_StructInit(&gpio_init);
         
         // Enable clock 
@@ -57,34 +64,64 @@ int main(void)
     
     for (; ; )
     {
-        // Listen for receiving data
-        data = USART_MyReceiveData(robot.uart_receiver.usart_type);
+        // Listen for receiving command
+        command = USART_MyReceiveData(robot.uart_receiver.usart_type);
         
-        // Check data
-        if (data == keyboard.up)
+        // Check command
+        if ((command == RobotForward) || (command == RobotForwardLeft) || (command == RobotForwardRight)
+            || (command == RobotBackward) || (command == RobotBackwardLeft) || (command == RobotBackwardRight)
+            || (command == RobotBrake))
         {
             // Go forward
-            Robot_Move(&robot, RobotForward);
+            Robot_Move(&robot, command);
         }
-        else if (data == keyboard.down)
+        else if (command == RobotSpeedIncrease)
         {
-            // Go backward
-            Robot_Move(&robot, RobotBackward);
+            Robot_ChangeSpeed(&robot, 1);
         }
-        else if (data == keyboard.left)
+        else if (command == RobotSpeedDecrease)
         {
-            // Go left
-            Robot_Move(&robot, RobotLeft);
+            Robot_ChangeSpeed(&robot, 0);
         }
-        else if (data == keyboard.right)
+        else if (command == RobotSpeedMax)
         {
-            // Go right
-            Robot_Move(&robot, RobotRight);
+            // Speed run at SPEED_MAX_VALUE%
+            Robot_SetSpeed(&robot, SPEED_MAX_VALUE);
         }
-        else if (data == keyboard.terminator)
+        else if (command == RobotSpeedMedium)
         {
-            // Brake
+            // Speed run at SPEED_MEDIUM_VALUE%
+            Robot_SetSpeed(&robot, SPEED_MEDIUM_VALUE);
+        }
+        else if (command == RobotSpeedMin)
+        {
+            // Speed run at SPEED_MIN_VALUE%
+            Robot_SetSpeed(&robot, SPEED_MIN_VALUE);
+        }
+        else if (command == RobotSpeed_0)
+        {
+            // Speed 0 = brake
             Robot_Move(&robot, RobotBrake);
+        }
+        else if (command == RobotSpeed_25)
+        {
+            // Speed 25 = run at 25%
+            Robot_SetSpeed(&robot, SPEED_25_VALUE);
+        }
+        else if (command == RobotSpeed_50)
+        {
+            // Speed 50 = run at 50%
+            Robot_SetSpeed(&robot, SPEED_50_VALUE);
+        }
+        else if (command == RobotSpeed_75)
+        {
+            // Speed 75 = run at 75%
+            Robot_SetSpeed(&robot, SPEED_75_VALUE);
+        }
+        else if (command == RobotSpeed_100)
+        {
+            // Speed 100 = run at 100%
+            Robot_SetSpeed(&robot, SPEED_100_VALUE);
         }
         else 
         {
@@ -93,29 +130,6 @@ int main(void)
     }
 }
 
-void LeftMotor_Configure(motor_t* p_motor)
-{
-    if (p_motor != NULL)
-    {
-        p_motor->direction = MotorForward;
-        p_motor->speed = MOTOR_SPEED;
-        p_motor->gpio_port = MOTOR_PORT;
-        p_motor->gpio_direction_pin_1 = MOTOR_IN1;
-        p_motor->gpio_direction_pin_2 = MOTOR_IN2;
-    }
-}
-
-void RightMotor_Configure(motor_t* p_motor)
-{
-    if (p_motor != NULL)
-    {
-        p_motor->direction = MotorForward;
-        p_motor->speed = MOTOR_SPEED;
-        p_motor->gpio_port = MOTOR_PORT;
-        p_motor->gpio_direction_pin_1 = MOTOR_IN3;
-        p_motor->gpio_direction_pin_2 = MOTOR_IN4;
-    }
-}
 
 void OnOffButton_Configure(button_t* p_button)
 {
@@ -126,23 +140,7 @@ void OnOffButton_Configure(button_t* p_button)
     }
 }
 
-void UARTReceiver_Configure(usart_t* p_controller)
-{
-    if (p_controller != NULL)
-    {
-        p_controller->usart_type = USART_TYPE;
-        p_controller->port = USART_PORT;
-        p_controller->rx_pin = USART_RX;
-        p_controller->tx_pin = USART_TX;
-        
-        (p_controller->config).USART_BaudRate = USART_BAUD_RATE;
-        (p_controller->config).USART_HardwareFlowControl = USART_HARDWARE_FLOW_CONTROL;
-        (p_controller->config).USART_Mode = USART_MODE;
-        (p_controller->config).USART_Parity = USART_PARITY;
-        (p_controller->config).USART_StopBits = USART_STOP_BITS;
-        (p_controller->config).USART_WordLength = USART_WORD_LENGTH;
-    }
-}
+
 
 void Keyboard_Configure(keyboard_t* p_keyboard)
 {

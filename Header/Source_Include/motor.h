@@ -9,10 +9,10 @@
 #ifndef _MOTOR_H
 #define _MOTOR_H
 
-// Include header files
-#include "stm32f4xx.h"
-
 // Macros
+#define MOTOR_MAX_SPEED              90
+#define MOTOR_MIN_SPEED              0
+#define MOTOR_SPEED_CHANGE_INTERVAL  10
 
 // Enum types
 typedef enum
@@ -22,6 +22,16 @@ typedef enum
     MotorForward,    // 2 = Counter-clockwise = Fordward
 } motor_direction_e;
 
+////22-11-2015 @Hieu
+//typedef enum
+//{
+//    SpeedLevel0 = 0,    // 0%
+//    SpeedLevel1 = 25,   // 25%
+//    SpeedLevel2 = 50,   // 50%
+//    SpeedLevel3 = 75,   // 75%
+//    SpeedLevel4 = 100,  // 100%
+//} motor_speed_level_e;
+
 // Struct types
 typedef struct
 {
@@ -29,7 +39,9 @@ typedef struct
     uint16_t gpio_direction_pin_1;
     uint16_t gpio_direction_pin_2;
     motor_direction_e direction;
-    uint16_t speed;
+    TM_PWM_TIM_t tim_data;
+    TM_PWM_Channel_t pwm_channel;
+    float speed;
 } motor_t;
 
 // PUBLIC FUNCTION PROTOTYPES
@@ -95,6 +107,26 @@ motor_direction_e Motor_GetDirection(motor_t* p_motor);
  * Return: void
  */
 void Motor_SetDirection(motor_t* p_motor, motor_direction_e direction);
+
+//22-11-2015 @Hieu
+/*
+ * Name: Motor_SetSpeedLevel
+ * Module: Motor
+ * Parameters:  speedPercent: 0-100%
+ * Description: Set motor's speed level
+ * Return: void
+ */
+void Motor_SetSpeed(motor_t* p_motor, float speedPercent);
+
+//24-11-2015 @Hieu
+/*
+ * Name: Motor_ChangeSpeed
+ * Module: Motor
+ * Parameters:  increase: > 0 to increase speed, <= 0 to decrease speed
+ * Description: Change motor's speed up or down
+ * Return: void
+ */
+void Motor_ChangeSpeed(motor_t* p_motor, uint8_t increase);
 
 #endif
 // End file
